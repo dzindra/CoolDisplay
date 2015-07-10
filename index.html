@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Cool Display</title>
+	<link rel="shortcut icon" href="favicon.ico" />
+	<style>
+		body { background-color: #fffff0; font-family: sans-serif; text-align: center; }
+		.content { max-width: 800px; margin: 0 auto; }
+		textarea { font-family: monospace; }
+	</style>
+	<script type="text/javascript">
+		function doClick(e){var c=document.getElementById("status"),t=document.getElementById("dispText"),n=t.value;if(!n)return void alert("Enter text!");e.disabled=!0,c.innerHTML="Sending...";for(var a="",d=0;d<n.length;d++){var r=convTable["c"+n.charCodeAt(d)];a+=r?r:n.charCodeAt(d)>255?".":n.charAt(d)}var i=new XMLHttpRequest;i.onreadystatechange=function(){4==i.readyState&&(e.disabled=!1,200==i.status?(t.value="",c.innerHTML="Sent!"):c.innerHTML="Error while sending: "+i.statusText)},i.open("GET","setText?"+a,!0);try{i.send()}catch(s){e.disabled=!1,c.innerHTML="Error while sending: "+s}}var convTable={c345:"%fd",c237:"%a1",c353:"%e7",c382:"%a7",c357:"%9c",c269:"%9f",c253:"%ec",c367:"%85",c328:"%e5",c250:"%a3",c283:"%d8",c271:"%d4",c225:"%a0",c233:"%82",c243:"%a2",c344:"%fc",c205:"%d6",c352:"%e6",c381:"%a6",c356:"%9b",c268:"%ac",c221:"%ed",c366:"%de",c327:"%d5",c218:"%e9",c282:"%b7",c270:"%d2",c193:"%b5",c201:"%90",c211:"%e0"};
+	</script>
+</head>
+<body>
+	<div class='content'>
+		<h1>Cool Display</h1>
+		<p><textarea id='dispText' rows="2" cols="20"></textarea></p>
+		<p><button onclick='doClick(this);'>Display!</button></p>
+		<p id='status'></p>
+		<hr />
+		<p>Copyright 2015 <a href="mailto:jindrich@dolezy.cz">Jindřich Doležy</a> | <a href="https://github.com/dzindra/CoolDisplay">Source on github</a> | Licensed under the Apache License, Version 2.0</a></p>
+	</div>
+</body>
+</html>
